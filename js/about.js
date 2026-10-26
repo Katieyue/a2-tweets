@@ -21,10 +21,18 @@ function parseTweets(runkeeper_tweets) {
   });
 
   // Identify earliest/latest date
+  const options = {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  };
+
   document.getElementById("firstDate").innerText =
-    tweets_copy[0].time.toLocaleDateString();
-  document.getElementById("lastDate").innerText =
-    tweets_copy[numTweets - 1].time.toLocaleDateString();
+    tweets_copy[0].time.toLocaleDateString("en-US", options);
+  document.getElementById("lastDate").innerText = tweets_copy[
+    numTweets - 1
+  ].time.toLocaleDateString("en-US", options);
 
   // Update categories count
   const category_map = {};
@@ -35,23 +43,37 @@ function parseTweets(runkeeper_tweets) {
     category_map["completed_event"];
   document.getElementsByClassName("completedEvents").item(1).innerText =
     category_map["completed_event"];
+
+  const rounding_options = { notation: "fixed", precision: 2 };
   document.getElementsByClassName("completedEventsPct").item(0).innerText =
-    math.format(category_map["completed_event"] / numTweets, 2) + "%";
+    math.format(
+      (category_map["completed_event"] / numTweets) * 100,
+      rounding_options,
+    ) + "%";
 
   document.getElementsByClassName("achievements").item(0).innerText =
     category_map["achievement"];
   document.getElementsByClassName("achievementsPct").item(0).innerText =
-    math.format(category_map["achievement"] / numTweets, 2) + "%";
+    math.format(
+      (category_map["achievement"] / numTweets) * 100,
+      rounding_options,
+    ) + "%";
 
   document.getElementsByClassName("liveEvents").item(0).innerText =
     category_map["live_event"];
   document.getElementsByClassName("liveEventsPct").item(0).innerText =
-    math.format(category_map["live_event"] / numTweets, 2) + "%";
+    math.format(
+      (category_map["live_event"] / numTweets) * 100,
+      rounding_options,
+    ) + "%";
 
   document.getElementsByClassName("miscellaneous").item(0).innerText =
     category_map["miscellaneous"];
   document.getElementsByClassName("miscellaneousPct").item(0).innerText =
-    math.format(category_map["miscellaneous"] / numTweets, 2) + "%";
+    math.format(
+      (category_map["miscellaneous"] / numTweets) * 100,
+      rounding_options,
+    ) + "%";
 
   // Update written count
   var num_written = 0;
@@ -60,7 +82,7 @@ function parseTweets(runkeeper_tweets) {
   }
   document.getElementsByClassName("written").item(0).innerText = num_written;
   document.getElementsByClassName("writtenPct").item(0).innerText =
-    math.format(num_written / numTweets) + "%";
+    math.format((num_written / numTweets) * 100, rounding_options) + "%";
 }
 
 //Wait for the DOM to load
