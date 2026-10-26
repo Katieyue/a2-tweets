@@ -12,11 +12,12 @@
 
 
 3. What online resources did you consult when completing this assignment? (list sites like StackOverflow or specific URLs for tutorials; describe queries to Generative AI or use of AI-based code completion)
+https://www.geeksforgeeks.org/javascript/how-to-count-number-of-occurrences-of-repeated-names-in-an-array-of-objects-in-javascript/
 
 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
-
+N/A
 
 
 5. Is there anything special we need to know in order to run your code?
